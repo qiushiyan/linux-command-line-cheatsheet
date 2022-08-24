@@ -1,0 +1,789 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Linux Command Line Cheatsheet
+% baposter Landscape Poster
+% LaTeX Template
+% Version 1.0 (11/06/13)
+% baposter Class Created by:
+% Brian Amberg (baposter@brian-amberg.de)
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Edited by Michelle Cristina de Sousa Baltazar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------
+
+\documentclass[landscape,a0paper,fontscale=0.285]{baposter} % Adjust the font scale/size here
+\title{The Linux Command Line Bootcamp}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Directory in which figures are stored
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single
+}
+
+\lstset{style=mystyle}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{colortbl}
+\usepackage{tabu}
+\usepackage{makecell}
+\usepackage{mathtools}
+%\usepackage{amsmath} % For typesetting math
+\usepackage{amssymb} % Adds new symbols to be used in math mode
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{enumitem} % Used to reduce itemize/enumerate spacing
+\usepackage{palatino} % Use the Palatino font
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+% set monofont
+\usepackage{fontspec}
+\setmonofont{FiraCode-Regular}
+
+\usepackage{multicol} % Required for multiple columns
+\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnseprule}{0mm} % No horizontal rule between columns
+
+\usepackage{tikz} % Required for flow chart
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
+
+\newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+
+\definecolor{lightblue}{rgb}{0.145,0.6666,1} % Defines the color used for content box headers
+
+\begin{document}
+
+\begin{poster}
+{
+headerborder=closed, % Adds a border around the header of content boxes
+colspacing=0.8em, % Column spacing
+bgColorOne=white, % Background color for the gradient on the left side of the poster
+bgColorTwo=white, % Background color for the gradient on the right side of the poster
+borderColor=lightblue, % Border color
+headerColorOne=black, % Background color for the header in the content boxes (left side)
+headerColorTwo=lightblue, % Background color for the header in the content boxes (right side)
+headerFontColor=white, % Text color for the header text in the content boxes
+boxColorOne=white, % Background color of the content boxes
+textborder=roundedleft, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+eyecatcher=true, % Set to false for ignoring the left logo in the title and move the title left
+headerheight=0.1\textheight, % Height of the header
+headershape=roundedright, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+headerfont=\Large\bf\textsc, % Large, bold and sans serif font in the headers of content boxes
+%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+linewidth=2pt % Width of the border lines around content boxes
+}
+%----------------------------------------------------------------
+%	Title
+%----------------------------------------------------------------
+{\bf\textsc{Linux Command Line}\vspace{0.5em}} % Poster title
+{\textsc{The Linux Command Line Bootcamp \hspace{12pt}}}
+{\textsc{Cheatsheet for Colt Steele's Udemy Course \\ (Created by Qiushi Yan) \hspace{12pt}}}
+
+
+
+\headerbox{help}{name=help,column=0,row=0}{
+
+%--------------------------------------
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Getting Help}} \linebreak
+
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}Display the manual page for a command} \\
+\texttt{man [command]...}  \\
+
+\textbf{man} pages are a built-in format of documentation. Each man page contains the synopsis of a command syntax. For instance, a simplified synopsis for the \texttt{sort} command looks like
+
+\texttt{\small{sort [-n] [-h] [-k=number] [file]...}} \\
+
+\begin{tabular}{p{0.2\linewidth}p{0.7\linewidth}}
+ \multicolumn{2}{c}{\textbf{example man page for \texttt{sort}  }} \\
+\texttt{\small{[-n]}} & the -n option is optional\\
+\texttt{\small{-k=number}} & the -k option expects an number \\
+\texttt{\small{[file]...}} & more than one file can be provided \\
+\end{tabular}\\
+
+\linebreak
+
+In summary, \texttt{\small{sort}} accepts optional argument -n, -h and -k, and -k expects a number, and we can provide more than one file to sort with.\\
+
+
+\multicolumn{1}{l}{\cellcolor[HTML]{DDFFFF}Shortcuts for navigating man pages.}
+
+\begin{tabular}{l l}
+Q & quit man page\\
+B/F & go back/forward a page \\
+/PATTERN & search for a pattern \\
+H & viewing all shortcuts
+\end{tabular}
+\newline
+
+For shell builtins without a man entry,
+\texttt{\small{help [command]}} provides instructions.
+}
+
+\headerbox{navigation}{name=navigation,below=help,column=0,row=1}{
+%--------------------------------------
+
+
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Navigation}} \\
+
+\begin{tabular}{p{0.3\linewidth}p{0.6\linewidth}}
+\multicolumn{1}{c}{\textbf{Command}} & \multicolumn{1}{c}{\textbf{Meaning}} \\
+\hline
+\multicolumn{2}{c}{inspect working directory: \small{\texttt{pwd}}} \\
+\hline
+\texttt{\small{pwd}} & print working directory \\
+\hline
+\multicolumn{2}{c}{list files of a directory: \small{\texttt{pwd}}} \\
+\hline
+\texttt{\small{ls [dir]}} & list files of a directory, default to current \\
+\texttt{\small{ls -a}} & include dot files \\
+\texttt{\small{ls -l}} & use long listing format \\
+\texttt{\small{ls -h}} & use human readable sizes \\
+\hline
+\multicolumn{2}{c}{navigate directories: \small{\texttt{cd}}} \\
+\hline
+\texttt{\small{cd [dir]}} & change into a directory \\
+\texttt{\small{cd ..}} & move up one level \\
+\texttt{\small{cd  \textbf{/} }} & go to root directory \\
+\texttt{\small{cd  \textbf{\textasciitilde} }} & go to home directory \\
+\texttt{\small{cd   -}} & go to previous directory \\
+\end{tabular}
+
+
+}
+
+
+
+
+%------------------------------------------------
+% edit fieles with anno
+%------------------------------------------------
+
+
+\headerbox{nano}{name=nano,,column=1,row=0}{
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Edit files with nano}} \\
+\begin{tabular}{l l}
+\texttt{nano file} & open file with nano \\
+\texttt{nano +line file} & open file at a line
+\end{tabular}
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}nano shortcuts}
+
+\begin{tabular}{l l}
+ctrl+O & write out \\
+ctrl+S & save \\
+ctrl+X & exit nano \\
+ctrl+W & search forwarad \\
+ctrl+\char`\\ & replace \\
+M+\char`\\,  M+/ & move to the first/last line \\
+ctrl+A, ctrl+E & move to the start/end of a line \\
+\end{tabular}
+
+\dotfill
+
+Edit /etc/nanorc for further configuration.
+}
+
+%------------------------------------------------
+% Working with files
+%------------------------------------------------
+
+\headerbox{Working with Files}{name=files,column=1,below=nano}{
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Manipulating Files and Directories}} \\
+
+\begin{tabular}{p{0.45\linewidth}p{0.45\linewidth}}
+\multicolumn{1}{c}{\textbf{Command}} & \multicolumn{1}{c}{\textbf{Meaning}} \\
+\hline
+\multicolumn{2}{c}{create files: \small{\texttt{touch}}} \\
+\hline
+\texttt{\small{touch [file]...}} & create files \\
+\texttt{\small{file [file]...}} & print file type \\
+\hline
+\multicolumn{2}{c}{create directories: \small{\texttt{mkdir}}} \\
+\hline
+\texttt{\small{\texttt{mkdir [dir]...}}} & make directories \\
+\texttt{\small{\texttt{mkdir -p [dir]...}}} & automatically make parent directories \\
+\hline
+\multicolumn{2}{c}{copy files and directories: \small{\texttt{cp}}} \\
+\hline
+\texttt{\small{\texttt{cp [item1] [item2]}}} & copy a single file or directory item1 to item2 \\
+\texttt{\small{\texttt{cp [file]... [dir]}}} & copy multiple files into a directory \\
+\hline
+\multicolumn{2}{c}{move and rename files: \small{\texttt{mv}}} \\
+\hline
+\texttt{\small{\texttt{mv [item1] [item2]}}} & move or rename the file or directory item1 to item2  \\
+\texttt{\small{\texttt{mv [item].. [dir]}}} & move files from one directory to another \\
+\hline
+\multicolumn{2}{c}{delete files and directories: \small{\texttt{mv}}} \\
+\hline
+\texttt{\small{\texttt{rm [item]...}}} & remove files or empty directories \\
+\end{tabular}
+
+
+
+
+\begin{tabular}{ccp{0.4\linewidth}}
+ \multicolumn{3}{c}{\textbf{Options for \texttt{rm} }} \\
+\multicolumn{1}{c}{\textbf{Option}} & \multicolumn{1}{c}{\textbf{Long}}   &
+\multicolumn{1}{l}{\textbf{Desc.}} \\
+\texttt{-i} & -{}-interactive & prompt before removal \\
+\texttt{-r} & -{}-recursive & allow removing non-empty directories \\
+\texttt{-f} & -{}-force & do not prompt\\
+\end{tabular}\\
+}
+
+
+%------------------------------------------------
+% File Manipulation Continued
+%------------------------------------------------
+
+\headerbox{Advanced File Manipulation}{name=files2,column=2,span=2,row=0}{
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - File Manipulation Cont.}} \\
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}display file contents}
+
+
+
+\begin{tabular}{p{0.25\linewidth}p{0.6\linewidth}}
+\multicolumn{1}{c}{\textbf{Command}} & \multicolumn{1}{l}{\textbf{Meaning}} \\
+\texttt{cat [file]...} & outputs concatenated result of multiple files \\
+\texttt{less [file]} & displays file contents one page at a time \\
+\texttt{tac [file]...} & prints files in reverse order (last line first) \\
+\texttt{rev [file]...} & reverse lines characterwise.
+\end{tabular}\\
+
+\vspace
+
+\texttt{\small{cat}} comes with some handy options \\
+
+\begin{tabular}{ccp{0.45\linewidth}}
+\multicolumn{1}{c}{\textbf{Option}} & \multicolumn{1}{c}{\textbf{Long}}   &
+\multicolumn{1}{l}{\textbf{Description}} \\
+\texttt{-n} & -{}-number & number output lines \\
+\texttt{-s} & -{}-squeeze-black & suppress repeated black lines \\
+\texttt{-A} & -{}-show-all & show non-printable characters such as tabs and line endings
+\end{tabular} \\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}print first / last parts of files inside the current directory}
+
+The \texttt{head} and \texttt{tail} command prints the first/last ten lines of the given file. The number of lines can be adjusted with the \texttt{-n} option, or simply \texttt{-[number]}.\\
+
+The \texttt{-f} option of \texttt{tail} views file contents in real time. This is useful for monitoring log files.
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}print line, word, byte counts}
+
+\texttt{wc [file]...} prints newline, word, byte counts for each file and a total line of all files
+
+To limit the output, use
+\begin{itemize}\compresslist
+    \item \texttt{-w}: print word counts
+    \item \texttt{-l}: print line counts
+    \item \texttt{-m}: print character counts
+    \item \texttt{-c}: print byte counts
+\end{itemize}
+
+
+\textbf{Recipe}: count total lines of \texttt{.js} files
+
+\begin{center}
+\texttt{wc -l *.js}
+\end{center}
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}sort lines of fines}
+
+By default, \texttt{\small{sort file}} prints each line from the specified file, sorted in alphabetical order. It can also merge multiple files into one sorted whole via \texttt{\small{sort file1 file2 ...}}. \\
+
+
+
+\begin{tabular}{ccl}
+\multicolumn{3}{c}{\textbf{Options for \texttt{sort} }} \\
+\multicolumn{1}{c}{\textbf{Option}} & \multicolumn{1}{c}{\textbf{Long}}   &
+\multicolumn{1}{c}{\textbf{Description}} \\
+\texttt{-n} & -{}-numeric-sort & compare based on string numerical value \\
+\texttt{-h} & -{}-human-numeric-sort & compare based on human readable numbers (e.g., 2k 1G) \\
+\texttt{-k} & \small{-{}-key=KEYDEF} & sort via a key \\
+\texttt{-r} & -{}-reverse & sort in reverse order \\
+\texttt{-u} & -{}-unique & sort unique values only
+\end{tabular}
+\\
+
+
+\textbf{Recipe}: find the top 10 biggest files inside a directory
+
+\begin{center}
+\texttt{ ls -lh [dir] | sort -rhk5 | head -10}
+\end{center}
+
+%------------------------------------------------
+}
+\end{poster}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%    Second Page    %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{poster}
+{
+headerborder=closed, colspacing=0.8em, bgColorOne=white, bgColorTwo=white, borderColor=lightblue, headerColorOne=black, headerColorTwo=lightblue,
+headerFontColor=white, boxColorOne=white, textborder=roundedleft, eyecatcher=true, headerheight=0.1\textheight, headershape=roundedright, headerfont=\Large\bf\textsc, linewidth=2pt
+}
+%----------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------
+{\bf\textsc{The Linux Command Line Bootcamp}\vspace{0.5em}} % Poster title
+{\textsc{\{ The \ \  Linux \ \  Command \ \  Line \ \ Bootcamp \} \hspace{12pt}}}
+
+
+%------------------------------------------------
+% Redirection and piping
+%------------------------------------------------
+
+
+\headerbox{redirection}{name=redirection,column=0}{
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Redirection and Piping}}\\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}redirection}
+
+A computer program communicates with the environment through the three standard channels: \textit{standard input} (stdin), \textit{standard output} (stdout), \textit{standard error} (stderr)
+
+\begin{tabular}{p{0.4\linewidth}p{0.5\linewidth}}
+\multicolumn{2}{c}{\textbf{Redirection Example }} \\
+\multicolumn{1}{c}{\textbf{Command}}  & \multicolumn{1}{c}{\textbf{Meaning}} \\
+\hline
+\multicolumn{2}{c}{standard output to file} \\
+\hline
+\texttt{\small{date} > file} & redirect stdout of \texttt{\small{date}} to file, overriding contents \\
+\texttt{\small{date >> file}} & append stdout instead of overriding \\
+\hline
+\multicolumn{2}{c}{standard error to file} \\
+\hline
+\texttt{\small{\texttt{cat nonfile 2> error.txt}}} & redirect stderr of cat to file, overriding contents \\
+\texttt{\small{\texttt{cat nonfile 2>> error.txt}}} & append stderr instead of overriding \\
+\hline
+\multicolumn{2}{c}{standard input to command} \\
+\hline
+\texttt{\small{\texttt{cat < file}}} & provide file as the standard input for cat \\
+\hline
+\multicolumn{2}{c}{redirect stdout and stdin together} \\
+\hline
+\texttt{\small{cat < original.txt > output.txt}} & provide original.txt to cat, then redirect stdout to output.txt \\
+\hline
+\multicolumn{2}{c}{redirect stdout and stderr together} \\
+\hline
+\texttt{\small{ls docs > output.txt 2> error.txt}} & redirect stdin to output.txt, and if there is an error, redirect error to error.txt \\
+\hline
+\multicolumn{2}{c}{shortcuts} \\
+\hline
+
+\texttt{\small{ls docs > output.txt 2>\&1}} & redirect both stdout and stderr to output.txt \\
+\texttt{\small{ls docs \&> output.txt}} & redirect both stdout and stderr to output.txt \\
+
+\end{tabular}
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}piping}
+
+While redirection operates between commands and files, the pipe operator \texttt{|} passes things between commands, converting stdout of a command to stdout of another command. \\
+
+\textbf{Recipe}: given a file, transform all letters to lowercase, remove spaces, and save to another file. \\
+% \begin{center}
+\small{\texttt{cat original > tr | "[:upper:]" "[:lower:]" $ | $ tr -d "[:space:]" $ > $ output}}
+% \end{center}
+}
+
+%------------------------------------------------
+% Expansion
+%------------------------------------------------
+
+
+\headerbox{expansion}{name=expansion,column=1,span=1}{
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Expansion}}\\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}wildcards and character classes}
+
+
+Shell interprets \textit{wildcard} characters as follows
+
+\begin{tabular}{p{0.3\linewidth}p{0.6\linewidth}}
+\multicolumn{1}{l}{\textbf{Wildcard}} & \multicolumn{1}{l}{\textbf{Meaning}} \\
+\texttt{*} & any characters \\
+\texttt{?} & any single character \\
+\texttt{\small{[characters]}} & any character that's in the set \\
+\texttt{\small{[!characters]}} & any character that's not in the set \\
+\texttt{\small{[[:class:]]}} & any character included in the class
+\end{tabular}
+
+\begin{tabular}{p{0.3\linewidth}p{0.6\linewidth}}
+\multicolumn{2}{c}{\textbf{Common character classes}} \\
+\texttt{[:alnum:]} & any alphabetical characters and numerals \\
+\texttt{[:alpha:]} & any alphabetical characters\\
+\texttt{\small{[:digit:]}} & any numeral \\
+\texttt{\small{[:lower:]}} & any lowercase letter \\
+\texttt{\small{[:upper:]}} & any uppercase letter \\
+\end{tabular}
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}brace expansion}
+
+Brace expansion generates multiple strings based on a pattern.\\
+
+\begin{tabular}{p{0.35\linewidth}p{0.5\linewidth}}
+\multicolumn{1}{l}{\textbf{Syntax}} & \multicolumn{1}{l}{\textbf{Interpretation}} \\
+\texttt{\small{file\{1,2,3\}}} & file1, file2, file3\\
+\texttt{\small{file\{1..31\}}} & file1, file2, ..., file30, file31\\
+\texttt{\small{file\{2..10..2\}}} & file2, file4, file6, file8, file10\\
+\texttt{\small{file\{A..E\}}} & fileA, fileB, fileC, fileD, fileE \\
+\texttt{\small{\{a,b,c\}\{1,2,3\}}} & a1,a2,a3,b1,b2,b3,c1,c2,c3\\
+\end{tabular}\\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}arithmetic expansion and command substitution}
+
+Shell performs arithmetic expansion and command substitution via the \texttt{\small{\$((expression))}} and \texttt{\small{\$(expression)}} syntax respectively. \\
+
+\begin{tabular}{p{0.3\linewidth}p{0.6\linewidth}}
+\texttt{\small{\$((2+2))}} & 4 \\
+\texttt{\small{\$(command)}} & whatever output \texttt{\small{command}} evaluates to
+\end{tabular}\\
+
+\normal
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}escaping}
+
+Quoting let shell treat these special symbols literally. While single quotes suppress all forms of substitution, double quotes preserves the special meaning of \texttt{\$}, \textbackslash and \texttt{`}. Within single quotes,
+command substitution and arithmetic expansion is still performed.
+
+}
+
+%------------------------------------------------
+% find
+%------------------------------------------------
+
+
+\headerbox{find}{name=find,column=2, span=1}{
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Find file by name}} \\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}the locate command}\\
+\texttt{\small{locate}} searches pathnames given a substring across the whole computer. \\
+
+\begin{tabular}{p{0.3 \linewidth}p{0.6\linewidth}}
+\texttt{\small{-i}} & ignore casing \\
+\texttt{\small{-l=number}} & limit entries \\
+\texttt{\small{-e}} & return update-to-date result (does not use database cache) \\
+\end{tabular}\\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}the find command} \\
+Given a starting point, \texttt{\small{find}} lists all files that meets certain option requirement. \\
+
+\texttt{\small{find [start\_dir] [option]... [expr]}} \\
+
+\begin{tabular}{ccp{0.48\linewidth}}
+\multicolumn{3}{c}{\textbf{Options for \texttt{\small{find}}}} \\
+\multicolumn{1}{c}{\textbf{Option}} &
+\multicolumn{1}{c}{\textbf{Example}} &
+\multicolumn{1}{c}{\textbf{Meaning}} \\
+\texttt{\small{-type}} & \texttt{\small{-type d}} & by file type, e.g., f means files, d means directories \\
+\texttt{\small{-name}} & \makecell{\small{\texttt{-name }} \\ \texttt{\small{'*OLD*'}}} & by file name (pattern specified via wildcards), similar to \texttt{\small{-path}}\\
+\texttt{\small{-size}} & \makecell{\small{\texttt{-size }}\\ \texttt{+1G}} & by file size \\
+\texttt{\small{-mtime}} & \makecell{\small{\texttt{-mtime }}\\ \texttt{-30}} & by modification time (days), similar options: \texttt{\small{-ctime}}, \texttt{\small{-atime}} \\
+\texttt{\small{-exec}} & \makecell{\small{\texttt{-exec rm }\\\texttt{'\{\}' ';'}}}  & execute custom actions on matched files
+\end{tabular}\\
+
+We can combine logical operators \texttt{\small{-and}}, \texttt{\small{-or}} and \texttt{\small{-not}} to create complex queries. \\
+
+\textbf{Recipe}: remove files inside the app folder whose name contains "OLD" or hasn't been modified for more than 7 days \\
+
+\texttt{\small{find app/ -name}} \texttt{\small{'*OLD*'}} \texttt{\small{-or -mtime +7 -exec rm '\{\}' ';'}} \\
+
+\textbf{Recipe}: count lines of html and css files in the current directory except the node\_modules folder \\
+
+\texttt{\small{find . -not -path }}\texttt{\small{'node\_modules/'}}  \texttt{\small{ \textbackslash(-name '*.html' -or -name '\*.css' \textbackslash) | xargs wc -l}}
+}
+
+%------------------------------------------------
+% grep
+%------------------------------------------------
+
+
+\headerbox{find}{name=find,column=3, span=1}{
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Search pattern in file contents}} \\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}the grep command}\\
+\texttt{\small{grep}} searches for patterns in each file's contents, by default printing each matching line.\\
+
+\texttt{\small{grep [option]... pattern [file]...}} \\
+
+\begin{tabular}{cp{0.7\linewidth}}
+ \multicolumn{2}{c}{\textbf{Options for \texttt{grep} }} \\
+ \multicolumn{1}{c}{\textbf{Option}} & \multicolumn{1}{l}{\textbf{Meaning}} \\
+\texttt{-i} & case insensitive matching \\
+\texttt{-w} & matches whole word rather than substring  \\
+\texttt{-r} & recursive search, searching the current
+working directory and any nested directories \\
+\texttt{-c} & count the number of occurrences \\
+\texttt{-v} & select non-matching  lines \\
+\texttt{-l} & print matching file names \\
+\texttt{\small{-C=number}} & print n lines of matching context \\
+\texttt{\small{-E}} & use extended regular expressions. \\
+\end{tabular} \\
+
+\vspace
+
+Unlike \texttt{\small{find}}, \texttt{\small{grep}} interprets \texttt{\small{pattern}} as regular expressions. The basic rules are \\
+
+\begin{tabular}{cp{0.7\linewidth}}
+\multicolumn{2}{c}{\textbf{Basic regex rules}} \\
+     \texttt{.} & any single character \\
+     \^ ,  \texttt{\$} & start or end of a line \\
+     \texttt{[abc]} & any character in the set \\
+     \texttt{[\^{}abc]} & any character not in the set \\
+     \texttt{*} & repeat previous expression 0 or more times \\
+
+\end{tabular}\\
+\vspace
+
+With the \texttt{-E} option, we are equipped with additional special characters to write \textit{extended regex}. \\
+
+
+\begin{tabular}{ccp{0.48\linewidth}}
+\multicolumn{1}{c}{\textbf{Regex}} &
+\multicolumn{1}{c}{\textbf{Example}} &
+\multicolumn{1}{c}{\textbf{Meaning}} \\
+\texttt{?} & \texttt{\small{[abc]?}} & repeat previous expression 0 or 1 time \\
+\texttt{+} & \texttt{\small{[abc]+}} & repeat previous expression multiple times \\
+\texttt{\small{\{n1,n2\}}} & \texttt{.}\texttt{\{2,4\}} & repeat previous expression a range of times, or exactly n times \\
+\end{tabular}\\
+
+\textbf{Recipe}: for all txt files in home directory, search for pattern starts with "console" (case insensitive) \\
+
+
+
+\texttt{\small{find \textbf{\textasciitilde} -name '*.txt' | xargs grep -iE '\^{}console.?'}}
+
+}
+\end{poster}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%    third page    %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{poster}
+{
+headerborder=closed, colspacing=0.8em, bgColorOne=white, bgColorTwo=white, borderColor=lightblue, headerColorOne=black, headerColorTwo=lightblue,
+headerFontColor=white, boxColorOne=white, textborder=roundedleft, eyecatcher=true, headerheight=0.1\textheight, headershape=roundedright, headerfont=\Large\bf\textsc, linewidth=2pt
+}
+%----------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------
+{\bf\textsc{The Linux Command Line Bootcamp}\vspace{0.5em}} % Poster title
+{\textsc{\{ The \ \  Linux \ \  Command \ \  Line \ \ Bootcamp \} \hspace{12pt}}}
+
+
+
+\headerbox{permissions}{name=permissions,column=0, span=1}{
+
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - File Permissions}}\\
+
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}owners, groups and others}
+
+To ensure system security, a permission system is designed dividing users into \textit{owners}, \textit{owner groups} and \textit{others} for each file and directory. Permissions granted to one role won't affect the other two. \\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}reading permissions}
+
+The first 10 characters of \texttt{ls -l} list permissions for the owner, the group others, e.g. \\
+
+\texttt{\small{ls -l greet.txt}} \\
+{\color{green}\texttt{\small{-rw-rw-r-- 1 colt colt 6 Oct 7 14:34 greet.txt}]}} \\
+
+The first character \texttt{-} indicates the file type, including \texttt{-} (regular file), \texttt{d} (directory), \texttt{I} (symbolic link) and \texttt{c} (character special file). The next 9 characters are permissions for all 3 roles \\
+
+\begin{tabular}{p{0.05\linewidth}p{0.4\linewidth}p{0.4\linewidth}}
+\multicolumn{1}{l}{\textbf{}} &
+\multicolumn{1}{l}{\textbf{Files}} &
+\multicolumn{1}{l}{\textbf{Directories}} \\
+\texttt{?} & can be read & can list contents d \\
+\texttt{w} & can be modified & can create new files, rename files/folders but only if the executable attribute is also set \\
+\texttt{x} & can be executed as a program & allow a directory to be entered or "cd"ed into \\
+\texttt{-} & cannot be read, modified or executed (depending on its location) & cannot show, modify or cd into directory contents (depending on its location)_ \\
+\end{tabular}\\
+
+The above permissions mean \texttt{\small{greet.txt}} is a regular file, both owners and owner groups can read and modify its content, while others are only permitted to read, no one is allowed execution access.
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}altering permissions}
+
+\texttt{\small{chmod [mode] [file]}} alters permissions by specifying \\
+
+\begin{tabular}{l}
+- who we are changing permissions for \\
+- will the permission be added or removed \\
+- which permission are we setting \\
+\end{tabular}
+
+}
+
+
+\headerbox{permissions2}{name=permissions2,column=1, span=1}{
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Permissions Contd.}}\\
+
+\begin{tabular}{cp{0.7\linewidth}}
+\multicolumn{2}{c}{\small{\textbf{\texttt{chmod} symbolic and octal notation examples}}} \\
+     \texttt{\small{u+x}} & add execution permission to owner \\
+     \texttt{\small{u-x}} & remove execution permission from owner \\
+     \texttt{\small{+x}} & add execution permissions for all 3 roles, short for \texttt{\small{a+x}} \\
+     \texttt{\small{u+x,go=r}} & ddd execute permission for the owner and set the permissions for the group and others to read \\
+     \texttt{\small{600}} & allow read and write access to owner, remove all permissions for groups and others \\
+     \texttt{\small{755}} & allow read and write for all roles, only allow execution by owners  \\
+\end{tabular}\\
+
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}change identity} \\
+
+\begin{tabular}{p{0.4\linewidth}p{0.5\linewidth}}
+\multicolumn{1}{l}{\textbf{Command}} & \multicolumn{1}{l}{\textbf{Meaning}} \\
+\texttt{\small{su - [user]}} & create a
+new login shell for the user  \\
+\texttt{\small{sudo -l}} & see the permitted commands for
+the user to run as root user  \\
+\texttt{\small{chown [user] [file]}} & set user the file owner \\
+\texttt{\small{chown [user]:[group] [file]}} & set owner and group at once
+\end{tabular}
+}
+
+
+\headerbox{environment}{name=environment,column=1,below=permissions2}{
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Environment}} \\
+
+\begin{tabular}{p{0.4\linewidth}p{0.5\linewidth}}
+\multicolumn{1}{l}{\textbf{Command}} & \multicolumn{1}{l}{\textbf{Meaning}} \\
+\texttt{\small{printenv}} & list environment variables  \\
+\texttt{\small{export num=1}} & define and export variable to child session \\
+\texttt{\small{alias ll='ls -al'}} & define custom commands via aliases \\
+\small{\texttt{PATH="\$PATH:\textbf{\textasciitilde}/bin"}} & append to the path variable
+\end{tabular}
+
+To persist user-defined environment variables and aliases, we can edit shell startup files such as \small{\texttt{\textbf{\textasciitilde}/.bash\_profile}} (login sessions) and \small{\texttt{\textbf{\textasciitilde}/.bashrc}} (no-login sessions launched via GUI).
+
+}
+
+\headerbox{scripting}{name=scripting,column=2}{
+
+
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Basic Bash Scripting}} \\
+
+The basic workflow for writing a bash script is \\
+
+\begin{tabular}{l}
+- write script in a file and save it \\
+- make the script executable using \texttt{\small{chmod}} \\
+- verify shell can find it using \texttt{\small{PATH}} variable \\
+\end{tabular}\\
+
+
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}components of bash scripts}
+
+A bash script typically contains a shebang, comments and a series of commands, for example
+
+\begin{lstlisting}{language=bash}
+
+\#!/bin/bash
+
+\# print a message to the screen
+
+msg='hello world'
+
+echo \$msg
+\end{lstlisting}
+
+The shebang \texttt{\small{\#!/bin/bash}} tells OS which interpreter to use when executing, the second line started with \texttt{\small{\#}} are comments that is skipped by shell, any command follows afterwards. \\
+
+With proper permissions, we can execute the file by \texttt{\small{bash [script-path]}}. If the path is added to \texttt{\small{PATH}}, we can call its name directly, e.g. \\
+
+\texttt{\small{chmod u+x \textasciitilde/bin/hello }} \\
+\small{\texttt{PATH="\textasciitilde/bin:\$PATH"}} \\
+\texttt{\small{hello}}
+}
+
+\headerbox{cron}{name=cron,column=2, below=scripting}{
+\colorbox[HTML]{CCFFFF}{\makebox[\textwidth-2\fboxsep][l]{\bf - Cron jobs}} \\
+
+\multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}cron characters} \\
+Use \texttt{\small{crontab -e}} to schedule cron jobs. A job syntax looks like
+
+ +---------------- minute (0 - 59) \\
+ |  +------------- hour (0 - 23) \\
+ |  |  +---------- day of month (1 - 31) \\
+ |  |  |  +------- month (1 - 12) \\
+ |  |  |  |  +---- day of week (0 - 6) \\
+ |  |  |  |  | \\
+\underset{\texttt{\small{a}}}{*}  \underset{\texttt{\small{b}}}{*} \underset{\texttt{\small{c}}}{*}  \underset{\texttt{\small{d}}}{*}  \underset{\texttt{\small{e}}}{*}  \;\; \texttt{\small{command}} \\
+
+More about cron jobs see course slides and \href{https://en.wikipedia.org/wiki/Cron}{here}.  \\
+
+\textbf{Recipe}: run a program at 23:45 every Saturday \\
+\texttt{\small{45 23 * * 6 myscript.sh}}
+}
+
+\end{poster}
+
+
+
+\end{document}
