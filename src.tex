@@ -420,7 +420,7 @@ A computer program communicates with the environment through the three standard 
 \hline
 \multicolumn{2}{c}{redirect stdout and stderr together} \\
 \hline
-\texttt{\small{ls docs > output.txt 2> error.txt}} & redirect stdin to output.txt, and if there is an error, redirect error to error.txt \\
+\texttt{\small{ls docs > output.txt 2> error.txt}} & redirect stdout to output.txt, and if there is an error, redirect error to error.txt \\
 \hline
 \multicolumn{2}{c}{shortcuts} \\
 \hline
@@ -432,7 +432,7 @@ A computer program communicates with the environment through the three standard 
 
 \multicolumn{2}{l}{\cellcolor[HTML]{DDFFFF}piping}
 
-While redirection operates between commands and files, the pipe operator \texttt{|} passes things between commands, converting stdout of a command to stdout of another command. \\
+While redirection operates between commands and files, the pipe operator \texttt{|} passes things between commands, converting stdout of a command to stdin of another command. \\
 
 \textbf{Recipe}: given a file, transform all letters to lowercase, remove spaces, and save to another file. \\
 % \begin{center}
