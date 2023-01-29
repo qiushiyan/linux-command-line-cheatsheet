@@ -436,7 +436,7 @@ While redirection operates between commands and files, the pipe operator \texttt
 
 \textbf{Recipe}: given a file, transform all letters to lowercase, remove spaces, and save to another file. \\
 % \begin{center}
-\small{\texttt{cat original > tr | "[:upper:]" "[:lower:]" $ | $ tr -d "[:space:]" $ > $ output}}
+\small{\texttt{cat original > tr "[:upper:]" "[:lower:]" $ | $ tr -d "[:space:]" $ > $ output}}
 % \end{center}
 }
 
